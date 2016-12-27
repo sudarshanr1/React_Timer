@@ -31,5 +31,25 @@ describe('Test countdown component', function() {
         done();
       }, 3001);
     });
+
+    it('Test countdown on paused status', function(done){
+      var countDown = TestUtils.renderIntoDocument(<Countdown/>);
+      countDown.handleSetCountdown(3);
+      countDown.handleStatusChange('paused');
+      setTimeout(function() {
+        expect(countDown.state.count).toBe(3);
+        done();
+      }, 3001);
+    });
+
+    it('Test countdown on clear status', function(done){
+      var countDown = TestUtils.renderIntoDocument(<Countdown/>);
+      countDown.handleSetCountdown(3);
+      countDown.handleStatusChange('stopped');
+      setTimeout(function() {
+        expect(countDown.state.count).toBe(0);
+        done();
+      }, 3001);
+    });
   });
 });
