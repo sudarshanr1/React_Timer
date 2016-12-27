@@ -11,6 +11,9 @@ var Controls = React.createClass({
       _this.props.onStatusChange(status);
     }
   },
+  componentWillReceiveProps: function(nextProps) {
+    console.log("Component will receive props" +nextProps.countdownStatus);
+  },
   render: function() {
     var {countdownStatus} = this.props;
     var _this = this;
